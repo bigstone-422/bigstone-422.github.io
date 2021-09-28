@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一天初步了解了js的相关知识，有数据类型，变量，类型转换，隐式转换方法，运算符等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS学习第一天">
+<meta property="og:url" content="http://example.com/2021/09/13/day1%E8%87%AA%E6%80%BB/index.html">
+<meta property="og:site_name" content="一块大石头_">
+<meta property="og:description" content="第一天初步了解了js的相关知识，有数据类型，变量，类型转换，隐式转换方法，运算符等等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-13T12:49:33.333Z">
+<meta property="article:modified_time" content="2021-09-13T12:51:49.430Z">
+<meta property="article:author" content="BigStone_422">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/13/day1%E8%87%AA%E6%80%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JS学习第一天 | 一块大石头_</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="一块大石头_" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a target="_blank" rel="noopener" href="https://github.com/bigstone-422" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一块大石头_</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/13/day1%E8%87%AA%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="BigStone_422">
+      <meta itemprop="description" content="衣带渐宽终不悔，为伊消得人憔悴。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一块大石头_">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS学习第一天
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-13 20:49:33 / 修改时间：20:51:49" itemprop="dateCreated datePublished" datetime="2021-09-13T20:49:33+08:00">2021-09-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>第一天初步了解了js的相关知识，有数据类型，变量，类型转换，隐式转换方法，运算符等等。</p>
+<span id="more"></span>
+
+<h1 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h1><h2 id="JavaScript和ECMScript的关系"><a href="#JavaScript和ECMScript的关系" class="headerlink" title="JavaScript和ECMScript的关系"></a>JavaScript和ECMScript的关系</h2><p>前者是后者的体现，后者是前者的语法标准。</p>
+<h2 id="DOM与BOM"><a href="#DOM与BOM" class="headerlink" title="DOM与BOM"></a>DOM与BOM</h2><p>DOM：Doucment Object Modal文档对象模型。<br>BOM：Borwser Object Modal浏览器对象模型。</p>
+<h2 id="JS的概念与特点"><a href="#JS的概念与特点" class="headerlink" title="JS的概念与特点"></a>JS的概念与特点</h2><ul>
+<li>概念：js是基于对象和事件驱动的解释性脚本语言。</li>
+<li>特点：</li>
+<li><ul>
+<li>基于对象：一切皆为对象，可以使用自己创建出来的对象。</li>
+</ul>
+</li>
+<li><ul>
+<li>事件驱动：以事件作为驱动</li>
+</ul>
+</li>
+<li><ul>
+<li>解释性：相对于编译性来说，不需要打包编译直接在浏览器中执行</li>
+</ul>
+</li>
+<li><ul>
+<li>跨平台：只要浏览器支持js就行，与电脑系统无关。</li>
+</ul>
+</li>
+<li><ul>
+<li>相对安全：同源策略限制</li>
+</ul>
+</li>
+</ul>
+<h2 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h2><h3 id="行内"><a href="#行内" class="headerlink" title="行内"></a>行内</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">&#x27;alert(&quot;hello wrold&quot;)&#x27;</span>&gt;</span>点我出现弹窗<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>alert为浏览器弹窗。</p>
+<h3 id="内嵌"><a href="#内嵌" class="headerlink" title="内嵌"></a>内嵌</h3><p>使用script双标签，写在页面任何位置都可以。当前学习阶段建议写在body的结束标签之前。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;box&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    box.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        box.style.backgroundColor = <span class="string">&#x27;orange&#x27;</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="外链"><a href="#外链" class="headerlink" title="外链"></a>外链</h3><p>使用script双标签，在开始标签中使用src属性，给定.js文件的路径。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./js的引入.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：标签内部写代码，代码不会被执行。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>块注释：/* 块注释内容 */<br>快捷键为 ctrl+shift+/。但是我的电脑为alt+shift+A。</p>
+<p>行注释：// 注释内容<br>快捷键为 ctrl+/</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>分为输出调试和断点调试。</p>
+<blockquote>
+<p>输出调试</p>
+</blockquote>
+<ol>
+<li><p>alert警告框</p>
+</li>
+<li><p>prompt带有输入框的对话框。输入内容为返回值，返回值为string。点击取消的话返回值为null。</p>
+</li>
+<li><p>document.write()直接输出在页面，多个值用逗号隔开。</p>
+</li>
+<li><p>cosole.log()输出在控制台，多个值用逗号隔开。此方法最常用。</p>
+</li>
+</ol>
+<blockquote>
+<p>断点调试</p>
+</blockquote>
+<p>浏览器右键 –&gt; source —&gt; 打开要调试的文件 —&gt; 行数前点一下 (蓝色箭头、红色圆点) —&gt; 刷新 –&gt; 点击三角箭头。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>用来储存数据的容器，使用var声明。</p>
+<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><h4 id="先声明，后赋值"><a href="#先声明，后赋值" class="headerlink" title="先声明，后赋值"></a>先声明，后赋值</h4><p>var 变量名；<br>变量名=值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num;</span><br><span class="line">num = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="声明同时赋值"><a href="#声明同时赋值" class="headerlink" title="声明同时赋值"></a>声明同时赋值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">34</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个声明"><a href="#多个声明" class="headerlink" title="多个声明"></a>多个声明</h4><p>var 变量名1=值, 变量名2=值, 变量名3=值, …,</p>
+<h4 id="连等声明"><a href="#连等声明" class="headerlink" title="连等声明"></a>连等声明</h4><p>var 变量名1=变量名2=值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n1 = n2 = <span class="number">34</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明注意"><a href="#声明注意" class="headerlink" title="声明注意"></a>声明注意</h3><p>要注意命名规范，不能使用数字开头，不能使用关键字，不能与已存在的变量名重复，遵循驼峰命名法，使用有语义化的名字。</p>
+<p>只声名不赋值输出为undefined，不用var声明的为全局变量。既不声明，也不赋值，直接报错。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>五大基础：number，string，boolean，null，undefined。<br>一个复杂：object，array，function。</p>
+<p>判断数据类型：<br>typeof 数据</p>
+<h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><ul>
+<li>整型：整数，正整数，负整数，0。</li>
+<li>浮点数：小数点后至少有一位非0数字。</li>
+<li>NaN：Not a Number 非数字。</li>
+<li>进制数</li>
+<li>特殊值</li>
+</ul>
+<p>NaN的特性：<br>    typeof NaN 返回值为number<br>    NaN 不等于任何值，包括本身。<br>    NaN 与任何值计算结构都是NaN</p>
+<p>小数计算：<br>    当小数做计算时，由于计算机储存精度的问题，会出现偏差。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>字符串：使用成对引号包裹的内容。<br>当字符串赋值时，如果太长需要换行，使用反斜杠转义。<br>str.length可以得到字符串的字符个数。 浏览器右键 –&gt; source —&gt; 打开要调试的文件 —&gt; 行数前点一下 (蓝色箭头、红色圆点) —&gt; 刷新 –&gt; 点击三角箭头<br>str.charAt(index)可以得到第index+1位的字符。index为下标。从0开始。<br>str[index]方法同上，但是只有IE8+才能使用。<br>字符串拼接，如下代码为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f1 = <span class="string">&#x27;21&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> f = <span class="string">&#x27;俺今年已经岁了&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> f2 = f1 + <span class="string">&#x27;俺今年已经&#x27;</span> + f1 + <span class="string">&#x27;岁了&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(f2)</span><br></pre></td></tr></table></figure>
+
+<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>此类型的值只有true（真）和false（假）。<br>通常在if判断中使用。</p>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>只有一个值就是它本身</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>未定义，声明未赋值时出现。<br>js中，null==undefined</p>
+<h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><h3 id="强制转换number"><a href="#强制转换number" class="headerlink" title="强制转换number"></a>强制转换number</h3><blockquote>
+<p>Number()</p>
+</blockquote>
+<p>可以null(0)和布尔值(true 1  false 0)以及字符串中的空字符、空格字符(0)、纯数字字符, 其他的都会被转成NaN</p>
+<blockquote>
+<p>parseInt()</p>
+</blockquote>
+<p>从左往右依次转换每一个字符, 遇到不能转换的或者到结尾就会结束转换, 保留整数当第一个字符就不能转换的时候返回NaN。</p>
+<blockquote>
+<p>parseFloat</p>
+</blockquote>
+<p>从左往右依次转换每一个字符, 遇到不能转换的或者到结尾就会结束转换, 保留小数当第一个字符就不能转换的时候 返回NaN。</p>
+<h3 id="强制转换string"><a href="#强制转换string" class="headerlink" title="强制转换string"></a>强制转换string</h3><blockquote>
+<p>toString()</p>
+</blockquote>
+<p>将其他数据类型，转成字符串 null和undefined不能转换.</p>
+<blockquote>
+<p>String()</p>
+</blockquote>
+<p>转换一切数据</p>
+<blockquote>
+<p>区别在于能否转换null和undefined</p>
+</blockquote>
+<h3 id="强制转换-boolean"><a href="#强制转换-boolean" class="headerlink" title="强制转换-boolean"></a>强制转换-boolean</h3><ul>
+<li>正负数为true</li>
+<li>0为false</li>
+<li>NaN为false</li>
+<li>空字符串（注意不是null）为false</li>
+<li>空格符为true</li>
+<li>字符串为true</li>
+<li>null为false</li>
+<li>undefined为fasle</li>
+</ul>
+<h2 id="隐式转换方法"><a href="#隐式转换方法" class="headerlink" title="隐式转换方法"></a>隐式转换方法</h2><h3 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN()"></a>isNaN()</h3><p>判断数据是否为非数字<br>隐式调用 Number 方法 如果Number转出来的不是NaN 返回false  是NaN 返回true</p>
+<h3 id="toFixed"><a href="#toFixed" class="headerlink" title="toFixed()"></a>toFixed()</h3><p>保留小数，参数为保留几整数位，四舍五入。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ul>
+<li>用来实现程序执行计算的符号 一般操作两个操作数及以上的符号</li>
+<li>算术运算符: + - * / %(模) ++(自加) –(自减)</li>
+<li>赋值运算符: = += -= *= /= %=</li>
+<li>比较运算符: &gt; &gt;= &lt; &lt;= == === != !==</li>
+<li>逻辑运算符: &amp;&amp;(与) ||(或) !(取反)</li>
+<li>三目(元)运算符: 条件 ? 条件为真执行的代码 : 条件为假执行的代码;</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>BigStone_422
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/09/13/day1%E8%87%AA%E6%80%BB/" title="JS学习第一天">http://example.com/2021/09/13/day1自总/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/06/2d%E4%B8%8E3d/" rel="prev" title="2d和3d">
+      <i class="fa fa-chevron-left"></i> 2d和3d
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/14/day2%E8%87%AA%E6%80%BB/" rel="next" title="JS学习第二天">
+      JS学习第二天 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day1"><span class="nav-number">1.</span> <span class="nav-text">day1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%92%8CECMScript%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript和ECMScript的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM%E4%B8%8EBOM"><span class="nav-number">1.2.</span> <span class="nav-text">DOM与BOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">JS的概念与特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">引入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85"><span class="nav-number">1.4.1.</span> <span class="nav-text">行内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%B5%8C"><span class="nav-number">1.4.2.</span> <span class="nav-text">内嵌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%93%BE"><span class="nav-number">1.4.3.</span> <span class="nav-text">外链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">1.6.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.7.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="nav-number">1.7.1.</span> <span class="nav-text">声明方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E5%A3%B0%E6%98%8E%EF%BC%8C%E5%90%8E%E8%B5%8B%E5%80%BC"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">先声明，后赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%90%8C%E6%97%B6%E8%B5%8B%E5%80%BC"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">声明同时赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%A3%B0%E6%98%8E"><span class="nav-number">1.7.1.3.</span> <span class="nav-text">多个声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E7%AD%89%E5%A3%B0%E6%98%8E"><span class="nav-number">1.7.1.4.</span> <span class="nav-text">连等声明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E6%B3%A8%E6%84%8F"><span class="nav-number">1.7.2.</span> <span class="nav-text">声明注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.8.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#number"><span class="nav-number">1.8.1.</span> <span class="nav-text">number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-number">1.8.2.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boolean"><span class="nav-number">1.8.3.</span> <span class="nav-text">boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.8.4.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.8.5.</span> <span class="nav-text">undefined</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.9.</span> <span class="nav-text">强制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2number"><span class="nav-number">1.9.1.</span> <span class="nav-text">强制转换number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2string"><span class="nav-number">1.9.2.</span> <span class="nav-text">强制转换string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2-boolean"><span class="nav-number">1.9.3.</span> <span class="nav-text">强制转换-boolean</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.10.</span> <span class="nav-text">隐式转换方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isNaN"><span class="nav-number">1.10.1.</span> <span class="nav-text">isNaN()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toFixed"><span class="nav-number">1.10.2.</span> <span class="nav-text">toFixed()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.11.</span> <span class="nav-text">运算符</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="BigStone_422"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">BigStone_422</p>
+  <div class="site-description" itemprop="description">衣带渐宽终不悔，为伊消得人憔悴。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-04 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BigStone_422</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
